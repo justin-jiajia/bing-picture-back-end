@@ -27,8 +27,7 @@ image_re = get(image_url)
 with open(file_name, 'wb') as f:
     f.write(image_re.content)
 
-long_re = get(BING_URL + long_url, headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36'}
-)
+long_re = get(BING_URL + long_url, headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36'})
 long_soup = BeautifulSoup(long_re.text.replace('<br>', '\n'), 'lxml')
 long_description = long_soup.find('div', class_='ency_desc').text
 
