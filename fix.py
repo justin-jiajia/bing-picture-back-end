@@ -10,13 +10,13 @@ for i in range(0, len(d)):
     d[i]["long_description"] = d[i]["long_description"].replace(" ", "")
     if "阅读更多" in d[i]["long_description"]:
         d[i]["long_description"] = d[i]["long_description"][
-            d[i]["long_description"].index("阅读更多") + 4 :
+            d[i]["long_description"].index("阅读更多") + 4:
         ]
         pass
     if (
         len(d[i]["long_description"]) % 2 == 0
-        and d[i]["long_description"][0 : int(len(d[i]["long_description"]) / 2)]
-        == d[i]["long_description"][int(len(d[i]["long_description"]) / 2) :]
+        and d[i]["long_description"][0: int(len(d[i]["long_description"]) / 2)]
+        == d[i]["long_description"][int(len(d[i]["long_description"]) / 2):]
     ):
         d[i]["long_description"] = d[i]["long_description"][
             : int(len(d[i]["long_description"]) / 2)

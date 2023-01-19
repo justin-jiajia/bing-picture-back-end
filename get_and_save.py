@@ -10,7 +10,8 @@ with open('conf.json') as f:
     SAVE_JSON_PATH = j['SAVE_JSON_PATH']
     BING_URL = j['BING_URL']
 
-re = get(BING_URL, headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36'})
+re = get(BING_URL, headers={
+         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36'})
 now = datetime.now()
 year = now.year
 month = now.month
@@ -27,7 +28,8 @@ image_re = get(image_url)
 with open(SAVE_IMAGE_PATH + file_name, 'wb') as f:
     f.write(image_re.content)
 
-long_re = get(BING_URL + long_url, headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36'})
+long_re = get(BING_URL + long_url, headers={
+              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36'})
 long_soup = BeautifulSoup(long_re.text.replace('<br>', '\n'), 'lxml')
 long_description = long_soup.find('div', id='ency_desc_Prom').text
 
@@ -35,7 +37,8 @@ zd = []
 if exists(SAVE_JSON_PATH):
     with open(SAVE_JSON_PATH, 'r', encoding='UTF-8') as f:
         zd = loads(f.read())
-zd.append({'tittle': tittle, 'location': location, 'description': description, 'long_description': long_description, 'file_name': file_name})
+zd.append({'tittle': tittle, 'location': location, 'description': description,
+          'long_description': long_description, 'file_name': file_name})
 
 with open(SAVE_JSON_PATH, 'w', encoding='UTF-8') as f:
     f.write(dumps(zd))
