@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from json import dumps, loads
 from os.path import exists
 from datetime import datetime
+from page import page
 
 with open('conf.json') as f:
     j = loads(f.read())
@@ -34,11 +35,12 @@ long_soup = BeautifulSoup(long_re.text.replace('<br>', '\n'), 'lxml')
 long_description = long_soup.find('div', id='ency_desc_Prom').text
 
 zd = []
-if exists(SAVE_JSON_PATH):
-    with open(SAVE_JSON_PATH, 'r', encoding='UTF-8') as f:
+if exists(SAVE_JSON_PATH.replace('*', '')):
+    with open(SAVE_JSON_PATH.replace('*', ''), 'r', encoding='UTF-8') as f:
         zd = loads(f.read())
 zd.append({'tittle': tittle, 'location': location, 'description': description,
           'long_description': long_description, 'file_name': file_name})
 
-with open(SAVE_JSON_PATH, 'w', encoding='UTF-8') as f:
+with open(SAVE_JSON_PATH.replace('*', ''), 'w', encoding='UTF-8') as f:
     f.write(dumps(zd))
+page()

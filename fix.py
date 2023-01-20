@@ -4,9 +4,10 @@ with open("conf.json") as f:
     j = loads(f.read())
     SAVE_JSON_PATH = j["SAVE_JSON_PATH"]
 
-with open(SAVE_JSON_PATH, "r", encoding="UTF-8") as f:
+with open(SAVE_JSON_PATH.replace('*', ''), "r", encoding="UTF-8") as f:
     d = loads(f.read())
 for i in range(0, len(d)):
+    d[i]["id"] = i
     d[i]["long_description"] = d[i]["long_description"].replace(" ", "")
     if "阅读更多" in d[i]["long_description"]:
         d[i]["long_description"] = d[i]["long_description"][
@@ -21,5 +22,5 @@ for i in range(0, len(d)):
         d[i]["long_description"] = d[i]["long_description"][
             : int(len(d[i]["long_description"]) / 2)
         ]
-with open(SAVE_JSON_PATH, "w", encoding="UTF-8") as f:
+with open(SAVE_JSON_PATH.replace('*', ''), "w", encoding="UTF-8") as f:
     f.write(dumps(d))

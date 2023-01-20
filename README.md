@@ -9,6 +9,10 @@
 python fix.py
 ```
 
+我们加入了页数系统所以JSON文件名有所改变，请在`SAVE_JSON_PATH`中加入`*`这个字符。设置为`data*.json`的效果：保存为`data.json`、`data1.json`...
+
+由于加入页数系统JSON结构也有改变，同样运行`fix.py`!
+
 ## 配置
 
 ### 1.复制样例文件
@@ -28,7 +32,7 @@ vim conf.json
 ```json
 {
   "SAVE_IMAGE_PATH": "",
-  "SAVE_JSON_PATH": "data.json",
+  "SAVE_JSON_PATH": "data*.json",
   "BING_URL": "https://cn.bing.com/"
 }
 ```

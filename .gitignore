@@ -519,4 +519,5 @@ MigrationBackup/
 # End of https://www.toptal.com/developers/gitignore/api/python,vs
 conf.json
 data.json
+data*.json
 *-*-*.png
