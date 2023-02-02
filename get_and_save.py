@@ -41,6 +41,9 @@ if exists(SAVE_JSON_PATH.replace('*', '')):
 zd.append({'tittle': tittle, 'location': location, 'description': description,
           'long_description': long_description, 'file_name': file_name})
 
+for i in range(0, len(zd)):
+    zd[i]['id'] = i
+
 with open(SAVE_JSON_PATH.replace('*', ''), 'w', encoding='UTF-8') as f:
     f.write(dumps(zd))
 page()
