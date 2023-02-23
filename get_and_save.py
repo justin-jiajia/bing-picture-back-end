@@ -32,7 +32,7 @@ with open(SAVE_IMAGE_PATH + file_name, 'wb') as f:
 long_re = get(BING_URL + long_url, headers={
               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36'})
 long_soup = BeautifulSoup(long_re.text.replace('<br>', '\n'), 'lxml')
-long_description = long_soup.find('div', id='ency_desc_Prom').text
+long_description = long_soup.find('div', id='ency_desc_full').text
 
 zd = []
 if exists(SAVE_JSON_PATH.replace('*', '')):
